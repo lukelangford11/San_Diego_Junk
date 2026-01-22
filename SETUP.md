@@ -202,8 +202,8 @@ netlify env:set SUPABASE_SERVICE_ROLE_KEY "your-service-role-key"
 netlify env:set CLOUDINARY_CLOUD_NAME "your-cloud-name"
 netlify env:set CLOUDINARY_API_KEY "your-api-key"
 netlify env:set CLOUDINARY_API_SECRET "your-api-secret"
-netlify env:set CLOUDINARY_UPLOAD_PRESET "junk_removal_estimates"
-netlify env:set NOTIFICATION_EMAIL "leads@sandiegojunkpros.com"
+netlify env:set CLOUDINARY_UPLOAD_PRESET "your-upload-preset"
+netlify env:set NOTIFICATION_EMAIL "your-email@example.com"
 netlify env:set MAX_SUBMISSIONS_PER_HOUR "3"
 ```
 
