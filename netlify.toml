@@ -5,6 +5,8 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  # Exclude client-safe generated config from secrets scanning
+  SECRETS_SCAN_OMIT_PATHS = "env-config.js"
 
 # Custom headers for security
 [[headers]]
