@@ -7,6 +7,8 @@
   NODE_VERSION = "18"
   # Exclude client-safe generated config from secrets scanning
   SECRETS_SCAN_OMIT_PATHS = "env-config.js"
+  # These are public client-side credentials, not sensitive secrets
+  SECRETS_SCAN_OMIT_KEYS = "CLOUDINARY_CLOUD_NAME,CLOUDINARY_UPLOAD_PRESET"
 
 # Custom headers for security
 [[headers]]
