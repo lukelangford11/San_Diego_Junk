@@ -1,0 +1,857 @@
+/**
+ * Estimate Page Styles
+ * Extends the base style.css with estimator-specific components
+ */
+
+/* ========================================
+   ESTIMATE HERO
+   ======================================== */
+.estimate-hero {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: #f9fafb;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.estimate-hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.estimate-hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+.estimate-subtitle {
+  font-size: 1.1rem;
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.estimate-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+}
+
+.estimate-features li {
+  background: rgba(251, 191, 36, 0.1);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+}
+
+/* ========================================
+   PROGRESS STEPS
+   ======================================== */
+.progress-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .progress-circle {
+  background: #fbbf24;
+  color: #111827;
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.2);
+}
+
+.progress-step.completed .progress-circle {
+  background: #10b981;
+  color: white;
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.progress-step.active .progress-label {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Progress line connector (optional enhancement) */
+.progress-steps::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: #e5e7eb;
+  z-index: 1;
+}
+
+/* ========================================
+   FORM LAYOUT
+   ======================================== */
+.estimate-form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-step-content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+.form-step-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.form-step-description {
+  color: #6b7280;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   FORM ELEMENTS
+   ======================================== */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="datetime-local"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+}
+
+.form-group input:invalid:not(:placeholder-shown) {
+  border-color: #ef4444;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* Checkbox Grid */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.checkbox-label:hover {
+  border-color: #fbbf24;
+  background: #fffbeb;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #fbbf24;
+}
+
+.checkbox-label input[type="checkbox"]:checked + span {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Honeypot (hidden spam trap) */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ========================================
+   PHOTO UPLOAD
+   ======================================== */
+.photo-upload-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.btn-upload {
+  display: inline-flex;
+  gap: 0.5rem;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.photo-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-item .remove-btn {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+.photo-item .remove-btn:hover {
+  background: #dc2626;
+}
+
+.photo-count {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 1rem;
+}
+
+/* ========================================
+   FORM ACTIONS
+   ======================================== */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.form-actions .btn {
+  min-width: 160px;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ========================================
+   ESTIMATE RESULT
+   ======================================== */
+.estimate-loading {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #fbbf24;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.estimate-error {
+  text-align: center;
+  padding: 2rem;
+}
+
+.estimate-error h2 {
+  color: #ef4444;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.estimate-success {
+  text-align: center;
+}
+
+.estimate-card {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 3px solid #fbbf24;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  margin: 2rem 0;
+}
+
+.estimate-range {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.estimate-min,
+.estimate-max {
+  color: #f59e0b;
+}
+
+.estimate-separator {
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.estimate-confidence {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.confidence-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.confidence-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.confidence-badge.low {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 2px solid #fecaca;
+}
+
+.confidence-badge.medium {
+  background: #fef3c7;
+  color: #d97706;
+  border: 2px solid #fde68a;
+}
+
+.confidence-badge.high {
+  background: #d1fae5;
+  color: #059669;
+  border: 2px solid #a7f3d0;
+}
+
+.estimate-assumptions {
+  text-align: left;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.estimate-assumptions h3 {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.estimate-assumptions p {
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.estimate-disclaimer {
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid #f59e0b;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.estimate-disclaimer strong {
+  color: #f59e0b;
+}
+
+/* ========================================
+   ITEM CHECKLIST (Estimator-only)
+   ======================================== */
+.item-checklist-section {
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.checklist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #f3f4f6;
+  cursor: pointer;
+}
+
+.checklist-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.checklist-expand-btn {
+  background: none;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checklist-expand-btn:hover {
+  border-color: #fbbf24;
+  color: #111827;
+}
+
+.item-checklist-container {
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+.item-checklist-container.collapsed {
+  display: none;
+}
+
+.checklist-hint {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.item-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checklist-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.checklist-item:hover {
+  border-color: #fbbf24;
+}
+
+.checklist-item.unchecked {
+  opacity: 0.5;
+  background: #f9fafb;
+}
+
+.checklist-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #fbbf24;
+  cursor: pointer;
+}
+
+.checklist-item-name {
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.checklist-item.unchecked .checklist-item-name {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.qty-stepper button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qty-stepper button:hover:not(:disabled) {
+  border-color: #fbbf24;
+  background: #fffbeb;
+}
+
+.qty-stepper button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.qty-stepper input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.qty-stepper input:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
+.checklist-item-yards {
+  font-size: 0.85rem;
+  color: #6b7280;
+  min-width: 55px;
+  text-align: right;
+}
+
+.checklist-totals {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0 0.5rem;
+  margin-top: 0.75rem;
+  border-top: 2px solid #e5e7eb;
+}
+
+.total-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.total-yards {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.checklist-warning {
+  font-size: 0.85rem;
+  color: #d97706;
+  background: #fef3c7;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* ========================================
+   NEXT STEPS
+   ======================================== */
+.next-steps {
+  text-align: left;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 0.75rem;
+}
+
+.next-steps h3 {
+  font-size: 1.3rem;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.steps-list-compact {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 0;
+}
+
+.steps-list-compact li {
+  counter-increment: step;
+  padding-left: 2.5rem;
+  position: relative;
+  margin-bottom: 0.75rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.steps-list-compact li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  background: #fbbf24;
+  color: #111827;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ========================================
+   BENEFITS GRID
+   ======================================== */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.benefit-card {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.benefit-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  color: #111827;
+}
+
+.benefit-card p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .estimate-hero {
+    padding: 2rem 0;
+  }
+
+  .estimate-features {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .progress-steps {
+    gap: 1rem;
+  }
+
+  .progress-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .progress-label {
+    font-size: 0.8rem;
+  }
+
+  .progress-steps::before {
+    display: none;
+  }
+
+  .form-step-content {
+    padding: 1.5rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .estimate-range {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .estimate-separator {
+    display: none;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .estimate-card {
+    padding: 1.5rem;
+  }
+
+  .estimate-range {
+    font-size: 1.8rem;
+  }
+  
+  /* Checklist mobile styles */
+  .checklist-item {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+  }
+  
+  .checklist-item-yards {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  
+  .qty-stepper {
+    grid-column: 2 / 4;
+    grid-row: 2;
+    justify-self: start;
+  }
+}

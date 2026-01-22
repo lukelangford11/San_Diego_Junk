@@ -1,0 +1,4 @@
+# AI / LLM crawler policy for sandiegojunkpros.com
+
+User-agent: *
+Allow: /

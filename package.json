@@ -1,0 +1,13 @@
+{
+  "name": "san-diego-junk-removal",
+  "version": "1.0.0",
+  "description": "Lead generation platform for San Diego junk removal services",
+  "scripts": {
+    "build": "node build-env.js",
+    "prebuild": "echo 'Generating environment configuration...'"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "openai": "^6.16.0"
+  }
+}
