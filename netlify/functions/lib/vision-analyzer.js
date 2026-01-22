@@ -13,6 +13,10 @@ function getOpenAIClient() {
   if (!openaiClient) {
     const apiKey = process.env.OPENAI_API_KEY;
     
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/cd6d1eee-829d-4537-b383-ae0686e3ec87',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'vision-analyzer.js:13',message:'getOpenAIClient called',data:{apiKeyDefined:!!apiKey,apiKeyLength:apiKey?.length,apiKeyPrefix:apiKey?.substring(0,7),apiKeySuffix:apiKey?.substring(apiKey?.length-4)},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,B,D'})}).catch(()=>{});
+    // #endregion
+    
     if (!apiKey) {
       throw new Error('Missing OPENAI_API_KEY environment variable. Set it in .env or Netlify environment variables.');
     }
@@ -33,6 +37,10 @@ export async function analyzePhotos(photoUrls) {
   if (!photoUrls || photoUrls.length === 0) {
     throw new Error('No photos provided for analysis');
   }
+  
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/cd6d1eee-829d-4537-b383-ae0686e3ec87',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'vision-analyzer.js:33',message:'analyzePhotos called',data:{photoCount:photoUrls?.length},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,E'})}).catch(()=>{});
+  // #endregion
   
   try {
     const openai = getOpenAIClient();
@@ -80,6 +88,10 @@ export async function analyzePhotos(photoUrls) {
     
   } catch (error) {
     console.error('OpenAI Vision API error:', error);
+    
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/cd6d1eee-829d-4537-b383-ae0686e3ec87',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'vision-analyzer.js:91',message:'OpenAI API error caught',data:{errorMessage:error?.message,errorCode:error?.code,errorType:error?.type,errorStatus:error?.status,apiKeyExists:!!process.env.OPENAI_API_KEY},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,B,C,D,E'})}).catch(()=>{});
+    // #endregion
     
     // Return fallback data if vision fails
     return getFallbackAnalysis(photoUrls.length);
