@@ -10,6 +10,12 @@ const path = require('path');
 const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_UPLOAD_PRESET = process.env.CLOUDINARY_UPLOAD_PRESET;
 
+// DEBUG: Log what we're seeing
+console.log('🔍 DEBUG: Reading environment variables...');
+console.log('  CLOUDINARY_CLOUD_NAME:', CLOUDINARY_CLOUD_NAME ? `"${CLOUDINARY_CLOUD_NAME}"` : 'UNDEFINED');
+console.log('  CLOUDINARY_UPLOAD_PRESET:', CLOUDINARY_UPLOAD_PRESET ? `"${CLOUDINARY_UPLOAD_PRESET}"` : 'UNDEFINED');
+console.log('  All env keys:', Object.keys(process.env).filter(k => k.includes('CLOUDINARY')).join(', '));
+
 // Validate required environment variables
 if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_UPLOAD_PRESET) {
   console.error('❌ ERROR: Missing required environment variables for build');
@@ -17,6 +23,7 @@ if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_UPLOAD_PRESET) {
   console.error('  - CLOUDINARY_CLOUD_NAME:', CLOUDINARY_CLOUD_NAME ? '✓' : '✗ MISSING');
   console.error('  - CLOUDINARY_UPLOAD_PRESET:', CLOUDINARY_UPLOAD_PRESET ? '✓' : '✗ MISSING');
   console.error('\nSet these in Netlify: Site settings → Environment variables');
+  console.error('Make sure they are scoped to "Builds" (not just Functions/Runtime)');
   process.exit(1);
 }
 
