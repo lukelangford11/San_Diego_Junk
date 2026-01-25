@@ -1,0 +1,13 @@
+# Netlify deploy ignore rules
+# This overrides .gitignore for deployment
+
+# Keep these out of deployment
+node_modules/
+.env
+.env.local
+*.log
+.DS_Store
+
+# IMPORTANT: Allow env-config.js to be deployed
+# (it's generated during build and needed for the site to work)
+!env-config.js
